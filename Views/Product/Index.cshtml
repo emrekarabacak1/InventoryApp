@@ -1,0 +1,21 @@
+@model List<InventoryApp.Models.Product>
+
+<h2>Ürün Listesi</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Ürün Adı</th>
+            <th>Fiyatı</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var p in Model){
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.Name</td>
+                <td>@p.Price</td>
+            </tr>
+        }
+    </tbody>
+</table>
