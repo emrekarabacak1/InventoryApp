@@ -15,9 +15,34 @@ namespace InventoryApp.Controllers
             new Product{Id=4, Name="Monitor",Price=5000},
         };
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View(products);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Product product)
+        {
+            int maxId;
+
+            if (products.Any())
+            {
+                maxId = products.Max(product => product.Id);
+            }
+            else
+            {
+                maxId = 0;
+            }
+            product.Id = maxId + 1;
+            products.Add(product);
+            return RedirectToAction("Index");
         }
 
     }
